@@ -36,7 +36,6 @@ public class Run {
 		UnitGroupWisePlus.run(dsg, 4);
 		long endTime3 = System.currentTimeMillis();
 		
-		long endTime = System.currentTimeMillis();
 		System.out.println("程序pointwise运行时间为：" + (endTime1-startTime1) + "ms" );
 		System.out.println("程序unitgroupwise运行时间为：" + (endTime2-startTime2) + "ms" );
 		System.out.println("程序unitgroupwise+运行时间为：" + (endTime3-startTime3) + "ms" );
