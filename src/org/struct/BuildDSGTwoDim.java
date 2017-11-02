@@ -2,30 +2,24 @@ package org.struct;
 import java.util.*;
 
 
-public class BuildDSG<T> {
+
+public class BuildDSGTwoDim {
 	
-	//按照x维降序，y维降序给graphPoints_list排序
-	public ArrayList<TwoDim> SortGraphPointsTwoDim(ArrayList<TwoDim> graphPoints_list){
+	//按照x维升序，y维降序给graphPoints_list排序
+	public ArrayList<TwoDim> SortGraphPoints(ArrayList<TwoDim> graphPoints_list){
 		TwoDim sort = new TwoDim();
-		Collections.sort(graphPoints_list,sort);	
+		Collections.sort(graphPoints_list,sort);
+		//graphPoints_list.sort(new Mycomparator());
+		
 		return graphPoints_list;
 	}
 	
-//	public ArrayList<MultiDim> SortGraphPointsMultiDim(ArrayList<MultiDim> graphPoints_list){
-//		MultiDim sort = new MultiDim();
-//		Collection.sort(graphPoints_list,sort);
-//		return graphPoints_list;
-//		
-//	}
-	
-	//二维构造skylineLayer,Layer_index序号从1开始,参数为拍好序的graphPoints_list
+	//二维构造skylineLayer,Layer_index序号从1开始
 	public ArrayList<ArrayList<GraphPoints<TwoDim>>> BuildSkylineLayerForTwoDim(ArrayList<TwoDim> graphPoints_list) {
-		//long startTime = System.currentTimeMillis();
-		
 		ArrayList<ArrayList<GraphPoints<TwoDim>>> skylineLayer = new ArrayList<>();
-		ArrayList<GraphPoints<TwoDim>> layers = new ArrayList<>();//每一层的节点  
+		ArrayList<GraphPoints<TwoDim>> layers = new ArrayList<>();//每一层的节点
 		ArrayList<GraphPoints<TwoDim>> tail_layers = new ArrayList<>(); //记录每一层的tail_points
-		ArrayList<TwoDim> sorted_graphPoints = SortGraphPointsTwoDim(graphPoints_list);
+		ArrayList<TwoDim> sorted_graphPoints = SortGraphPoints(graphPoints_list);
 		
 		//构造第一个GraphPoints元素
 		TwoDim twodim_point = sorted_graphPoints.get(0);
@@ -72,9 +66,6 @@ public class BuildDSG<T> {
 			}
 		}
 		//PrintSkylineLayer(skylineLayer);
-		//long endTime = System.currentTimeMillis();
-		//System.out.println("BuildSkylineLayerForTwoDim花费时间：" + (endTime - startTime) );
-		
 		return skylineLayer;
 	}
 
@@ -82,7 +73,6 @@ public class BuildDSG<T> {
 	public Boolean IsDominateTwoDim(TwoDim d1,TwoDim d2) {
 		return ( (d1.x<=d2.x)&&(d1.y<=d2.y) );
 	}
-	
 	
 	//二分查找layer
 	public int FindLayerByBinary(ArrayList<ArrayList<GraphPoints<TwoDim>>> skylineLayer,TwoDim cur_points,int maxlayer,ArrayList<GraphPoints<TwoDim>> tail_layers ) {
@@ -103,13 +93,11 @@ public class BuildDSG<T> {
 		}
 		return left;
 	}
-
 	
-	//使用skylineLayer构建DSG,仅构造第k层之前的节点
-	public ArrayList<ArrayList<GraphPoints<TwoDim>>> BuildDsgForTwoDim(ArrayList<ArrayList<GraphPoints<TwoDim>>> dsg,int k) {
-		long startTime = System.currentTimeMillis();
-		int layer_size = k < dsg.size() ? k:dsg.size();
-		for(int i=1;i<layer_size;i++) {
+	//使用skylineLayer构建DSG
+	public ArrayList<ArrayList<GraphPoints<TwoDim>>> BuildDsgForTwoDim(ArrayList<ArrayList<GraphPoints<TwoDim>>> dsg) {
+		
+		for(int i=1;i<dsg.size();i++) {
 			ArrayList<GraphPoints<TwoDim>> layer = dsg.get(i);
 			for(GraphPoints<TwoDim> point : layer) {
 				for(int j=0;j<i;j++) {
@@ -127,8 +115,7 @@ public class BuildDSG<T> {
 				
 			}
 		}
-		long endTime = System.currentTimeMillis();
-		System.out.println("BuildDsgForTwoDim花费时间：" + (endTime - startTime));
+		
 		return dsg;
 	}
 	
@@ -151,6 +138,7 @@ public class BuildDSG<T> {
 		}
 		
 	}
+	
 	
 	//根据skylineLayer打印
 	public void PrintSkylineLayer(ArrayList<ArrayList<GraphPoints<TwoDim>>> skylineLayer) {
