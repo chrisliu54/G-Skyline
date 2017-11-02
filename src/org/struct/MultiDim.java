@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 public class MultiDim implements Comparator<MultiDim> {
 	public double[] values;
+	
 	public int label;
 
 	public MultiDim(){

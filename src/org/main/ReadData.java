@@ -41,7 +41,7 @@ public class ReadData {
 		return twoDim_points;
 	}
 	
-	public ArrayList<MultiDim> buildMulPoints(String filepath){
+	public ArrayList<MultiDim> buildMultiPoints(String filepath){
 		ArrayList<MultiDim> multiDim_points = new ArrayList<>();
 		
 		try {

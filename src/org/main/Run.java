@@ -2,8 +2,12 @@ package org.main;
 import java.util.ArrayList;
 
 import org.algorithm.BaseLine;
+import org.algorithm.PointWise;
+import org.algorithm.UnitGroupWise;
 import org.struct.BuildDSG;
+import org.struct.BuildDSGMultiDim;
 import org.struct.GraphPoints;
+import org.struct.MultiDim;
 import org.struct.TwoDim;
 
 public class Run {
@@ -36,30 +40,32 @@ public class Run {
 		System.out.println("程序unitwise运行时间为：" + (endTime2-startTime2) + "ms" );
 
 		System.out.println("----------分隔符----------");
+		**/
+
 
 		//--------------MultiDim-------------------------
 		//读取数据文件
-		ArrayList<MultiDim> multi_dim_points = readData.buildMultiPoints("data/hotel_4.txt");
+		ArrayList<MultiDim> multi_dim_points = readData.buildMultiPoints("data/corr_4.txt");
 
 		BuildDSGMultiDim dsgMultiDim = new BuildDSGMultiDim();
 		ArrayList<ArrayList<GraphPoints<MultiDim>>> skylineLayerMultiDim = dsgMultiDim.BuildSkylineLayerForMultiDim(multi_dim_points);
 		ArrayList<ArrayList<GraphPoints<MultiDim>>> dsg_multi_dim = dsgMultiDim.BuildDsgForMultiDim(skylineLayerMultiDim);
-		dsgMultiDim.PrintDSG(dsg_multi_dim);
+		//dsgMultiDim.PrintDSG(dsg_multi_dim);
 		
-		**/
+		long startTime1 = System.currentTimeMillis();
+		PointWise<MultiDim> pointWise = new PointWise<MultiDim>();
+		pointWise.pointWise(dsg_multi_dim, 4);
+		long endTime1 = System.currentTimeMillis();
 		
-		BaseLine<TwoDim> bLine = new BaseLine<>();
-		ArrayList<TwoDim> now = new ArrayList<>();
-		ArrayList<ArrayList<TwoDim>> ans = new ArrayList<>();
-		bLine.BFSbuildCnkGroup(2, 0, twodim_points, now, ans);
+		System.out.println("----------------------");
+		long startTime2 = System.currentTimeMillis();
+		UnitGroupWise.run(dsg_multi_dim, 4);
+		long endTime2 = System.currentTimeMillis();
 		
-		for(ArrayList<TwoDim> list : ans) {
-			System.out.print("-------");
-			for(TwoDim twoDim:list) {
-				System.out.print(twoDim.toString());
-			}
-			System.out.println("-------");
-		}
+		//long endTime = System.currentTimeMillis();
+		System.out.println("程序pointwise运行时间为：" + (endTime1-startTime1) + "ms" );
+		System.out.println("程序unitwise运行时间为：" + (endTime2-startTime2) + "ms" );
+		
  	}
 	
 	

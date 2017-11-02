@@ -57,7 +57,7 @@ public class PointWise<T> {
 		//line2 循环每一个k
 		for(int i=1;i<k;i++) {
 			
-			System.out.println("开始计算第" + (i+1) + "层Groups:");
+			//System.out.println("开始计算第" + (i+1) + "层Groups:");
 			
 			levelGroup = new ArrayList<ArrayList<GraphPoints<T>>>();
 			//line3-line14

@@ -64,7 +64,7 @@ public class BuildDSGMultiDim {
         for(int i =0;i<=maxlayer;i++){
             realSkylineLayer.add(skylineLayer.get(i));
         }
-        PrintSkylineLayer(realSkylineLayer);
+        //PrintSkylineLayer(realSkylineLayer);
         return realSkylineLayer;
     }
 

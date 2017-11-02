@@ -127,7 +127,6 @@ public class BuildDSG<T> {
 				
 			}
 		}
-		
 		long endTime = System.currentTimeMillis();
 		System.out.println("BuildDsgForTwoDim花费时间：" + (endTime - startTime));
 		return dsg;

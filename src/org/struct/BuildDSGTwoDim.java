@@ -65,7 +65,7 @@ public class BuildDSGTwoDim {
 				}
 			}
 		}
-		PrintSkylineLayer(skylineLayer);
+		//PrintSkylineLayer(skylineLayer);
 		return skylineLayer;
 	}
 
