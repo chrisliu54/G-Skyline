@@ -1,8 +1,7 @@
 package org.main;
 import java.util.ArrayList;
 
-import org.algorithm.PointWise;
-import org.algorithm.UnitGroupWise;
+import org.algorithm.BaseLine;
 import org.struct.BuildDSG;
 import org.struct.GraphPoints;
 import org.struct.TwoDim;
@@ -19,6 +18,7 @@ public class Run {
 		ArrayList<ArrayList<GraphPoints<TwoDim>>> skylineLayerTwoDim = bDsg.BuildSkylineLayerForTwoDim(twodim_points);
 		ArrayList<ArrayList<GraphPoints<TwoDim>>> dsg = bDsg.BuildDsgForTwoDim(skylineLayerTwoDim,4);
 		
+		/**
 		//bDsg.PrintDSG(dsg);
 		long startTime1 = System.currentTimeMillis();
 		PointWise<TwoDim> pointWise = new PointWise<TwoDim>();
@@ -35,6 +35,20 @@ public class Run {
 		System.out.println("程序pointwise运行时间为：" + (endTime1-startTime1) + "ms" );
 		System.out.println("程序unitwise运行时间为：" + (endTime2-startTime2) + "ms" );
 		
+		**/
+		
+		BaseLine<TwoDim> bLine = new BaseLine<>();
+		ArrayList<TwoDim> now = new ArrayList<>();
+		ArrayList<ArrayList<TwoDim>> ans = new ArrayList<>();
+		bLine.BFSbuildCnkGroup(2, 0, twodim_points, now, ans);
+		
+		for(ArrayList<TwoDim> list : ans) {
+			System.out.print("-------");
+			for(TwoDim twoDim:list) {
+				System.out.print(twoDim.toString());
+			}
+			System.out.println("-------");
+		}
  	}
 	
 	
