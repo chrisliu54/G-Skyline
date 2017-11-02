@@ -45,12 +45,12 @@ public class Run {
 
 		//--------------MultiDim-------------------------
 		//读取数据文件
-		ArrayList<MultiDim> multi_dim_points = readData.buildMultiPoints("data/corr_4.txt");
+		ArrayList<MultiDim> multi_dim_points = readData.buildMultiPoints("data/hotel_4.txt");
 
 		BuildDSGMultiDim dsgMultiDim = new BuildDSGMultiDim();
 		ArrayList<ArrayList<GraphPoints<MultiDim>>> skylineLayerMultiDim = dsgMultiDim.BuildSkylineLayerForMultiDim(multi_dim_points);
 		ArrayList<ArrayList<GraphPoints<MultiDim>>> dsg_multi_dim = dsgMultiDim.BuildDsgForMultiDim(skylineLayerMultiDim);
-		//dsgMultiDim.PrintDSG(dsg_multi_dim);
+		dsgMultiDim.PrintDSG(dsg_multi_dim);
 		
 		long startTime1 = System.currentTimeMillis();
 		PointWise<MultiDim> pointWise = new PointWise<MultiDim>();
