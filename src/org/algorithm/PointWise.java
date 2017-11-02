@@ -31,7 +31,7 @@ public class PointWise<T> {
 		
 		
 		ArrayList<GraphPoints<T>> pre_points = Utils.preprocessing(dsgs, k);
-		System.out.println("预处理后的节点数为：" + pre_points.size());
+		//System.out.println("预处理后的节点数为：" + pre_points.size());
 		
 		//最终结果,groups的集合
 		ArrayList<ArrayList<ArrayList<GraphPoints<T>>>> k_skylineGgroups = new ArrayList<ArrayList<ArrayList<GraphPoints<T>>>>();
@@ -41,7 +41,7 @@ public class PointWise<T> {
 		//DSG中的所有skyline点
 		HashSet<GraphPoints<T>> skylinePoints = new HashSet<GraphPoints<T>>();
 		skylinePoints.addAll(dsgs.get(0));
-		System.out.println("skyline points (first layer) number: "+ skylinePoints.size());
+		//System.out.println("skyline points (first layer) number: "+ skylinePoints.size());
 		
 		//初始化k_skylineGgroups(0),第一层group,每个group包含一个节点
 		for(GraphPoints<T> point:dsgs.get(0)) {

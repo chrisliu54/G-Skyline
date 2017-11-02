@@ -34,7 +34,7 @@ public class ReadData {
 				TwoDim twoDim = new TwoDim(x,y,label);
 				twoDim_points.add(twoDim);
 			}
-			System.out.println("总的节点数为：" + twoDim_points.size());
+			//System.out.println("总的节点数为：" + twoDim_points.size());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -63,7 +63,7 @@ public class ReadData {
 				MultiDim multiDim = new MultiDim(multiDimValue, label);
 				multiDim_points.add(multiDim);
 			}
-			System.out.println("总的节点数为：" + multiDim_points.size());
+			//System.out.println("总的节点数为：" + multiDim_points.size());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

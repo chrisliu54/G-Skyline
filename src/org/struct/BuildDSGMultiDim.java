@@ -75,9 +75,10 @@ public class BuildDSGMultiDim {
     }
 
     //使用skylineLayer构建DSG
-    public ArrayList<ArrayList<GraphPoints<MultiDim>>> BuildDsgForMultiDim(ArrayList<ArrayList<GraphPoints<MultiDim>>> dsg) {
+    public ArrayList<ArrayList<GraphPoints<MultiDim>>> BuildDsgForMultiDim(ArrayList<ArrayList<GraphPoints<MultiDim>>> dsg,int k) {
 
-        for(int i=1;i<dsg.size();i++) {
+    	int layer_size = k < dsg.size() ? k:dsg.size();
+        for(int i=1;i<layer_size;i++) {
             ArrayList<GraphPoints<MultiDim>> layer = dsg.get(i);
             for(GraphPoints<MultiDim> point : layer) {
                 for(int j=0;j<i;j++) {
