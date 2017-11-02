@@ -2,7 +2,7 @@ package org.main;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -17,8 +17,9 @@ public class ReadData {
 		
 		try {
 			File file = new File(filepath);
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
-			BufferedReader bufferedReader = new BufferedReader(reader);
+			//InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
+			InputStream reader = ReadData.class.getResourceAsStream("/" + filepath);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(reader));
 			String line = null;
 			String numbers[];
 			double x,y;
@@ -47,8 +48,9 @@ public class ReadData {
 		try {
 			
 			File file = new File(filepath);
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
-			BufferedReader bufferedReader = new BufferedReader(reader);
+			//InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
+			InputStream reader = ReadData.class.getResourceAsStream("/" + filepath);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(reader));
 			String line = null;
 			String numbers[];
 			int label = 0;

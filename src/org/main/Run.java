@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import org.algorithm.PointWise;
 import org.algorithm.UnitGroupWise;
 import org.algorithm.UnitGroupWisePlus;
-import org.struct.BuildDSG;
 import org.struct.BuildDSGMultiDim;
 import org.struct.BuildDSGTwoDim;
 import org.struct.GraphPoints;
@@ -16,8 +15,9 @@ public class Run {
 	public static void main(String[] args) {
 		//读取数据文件
 		ReadData readData = new ReadData();
-		ArrayList<TwoDim> twodim_points = readData.buildTwoPoints("data/anti_2.txt");
+		ArrayList<TwoDim> twodim_points = readData.buildTwoPoints("hotel_2.txt");
 		
+		System.out.println(twodim_points.size());
 		long startTime = System.currentTimeMillis();
 		BuildDSGTwoDim bDsg = new BuildDSGTwoDim();
 		ArrayList<ArrayList<GraphPoints<TwoDim>>> skylineLayerTwoDim = bDsg.BuildSkylineLayerForTwoDim(twodim_points);
@@ -39,7 +39,7 @@ public class Run {
 
 		//--------------MultiDim-------------------------
 		//读取数据文件
-		ArrayList<MultiDim> multi_dim_points = readData.buildMultiPoints("data/corr_8.txt");
+		ArrayList<MultiDim> multi_dim_points = readData.buildMultiPoints("hotel_4.txt");
 
 		BuildDSGMultiDim dsgMultiDim = new BuildDSGMultiDim();
 		ArrayList<ArrayList<GraphPoints<MultiDim>>> skylineLayerMultiDim = dsgMultiDim.BuildSkylineLayerForMultiDim(multi_dim_points);
