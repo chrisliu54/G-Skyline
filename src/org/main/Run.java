@@ -11,7 +11,7 @@ public class Run {
 	public static void main(String[] args) {
 		//读取数据文件
 		ReadData readData = new ReadData();
-		ArrayList<TwoDim> twodim_points = readData.buildTwoPoints("data/hotel.txt");
+		ArrayList<TwoDim> twodim_points = readData.buildTwoPoints("data/hotel_2.txt");
 		
 		long startTime = System.currentTimeMillis();
 		BuildDSG bDsg = new BuildDSG();
@@ -34,6 +34,17 @@ public class Run {
 		//long endTime = System.currentTimeMillis();
 		System.out.println("程序pointwise运行时间为：" + (endTime1-startTime1) + "ms" );
 		System.out.println("程序unitwise运行时间为：" + (endTime2-startTime2) + "ms" );
+
+		System.out.println("----------分隔符----------");
+
+		//--------------MultiDim-------------------------
+		//读取数据文件
+		ArrayList<MultiDim> multi_dim_points = readData.buildMultiPoints("data/hotel_4.txt");
+
+		BuildDSGMultiDim dsgMultiDim = new BuildDSGMultiDim();
+		ArrayList<ArrayList<GraphPoints<MultiDim>>> skylineLayerMultiDim = dsgMultiDim.BuildSkylineLayerForMultiDim(multi_dim_points);
+		ArrayList<ArrayList<GraphPoints<MultiDim>>> dsg_multi_dim = dsgMultiDim.BuildDsgForMultiDim(skylineLayerMultiDim);
+		dsgMultiDim.PrintDSG(dsg_multi_dim);
 		
 		**/
 		
