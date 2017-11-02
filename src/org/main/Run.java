@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import org.algorithm.PointWise;
 import org.algorithm.UnitGroupWise;
+import org.algorithm.UnitGroupWisePlus;
 import org.struct.BuildDSG;
 import org.struct.GraphPoints;
 import org.struct.TwoDim;
@@ -30,10 +31,15 @@ public class Run {
 		long startTime2 = System.currentTimeMillis();
 		UnitGroupWise.run(dsg, 4);
 		long endTime2 = System.currentTimeMillis();
+
+		long startTime3 = System.currentTimeMillis();
+		UnitGroupWisePlus.run(dsg, 4);
+		long endTime3 = System.currentTimeMillis();
 		
-		//long endTime = System.currentTimeMillis();
+		long endTime = System.currentTimeMillis();
 		System.out.println("程序pointwise运行时间为：" + (endTime1-startTime1) + "ms" );
-		System.out.println("程序unitwise运行时间为：" + (endTime2-startTime2) + "ms" );
+		System.out.println("程序unitgroupwise运行时间为：" + (endTime2-startTime2) + "ms" );
+		System.out.println("程序unitgroupwise+运行时间为：" + (endTime3-startTime3) + "ms" );
 		
  	}
 	
