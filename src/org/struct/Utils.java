@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Utils {
 	 public static int MAXINT = (int)1e10;
+	 public static int MININT = -(int)1e10;
 
 	    //预处理之后的所有几点集合
 	    public static<T> ArrayList<GraphPoints<T>> preprocessing(ArrayList<ArrayList<GraphPoints<T>>> dsg, int k ){
