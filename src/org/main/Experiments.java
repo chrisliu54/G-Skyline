@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.algorithm.PointWise;
 import org.algorithm.UnitGroupWise;
@@ -15,12 +16,13 @@ import org.struct.MultiDim;
 import org.struct.TwoDim;
 
 
+
 public class Experiments {
 	
 	//以数据集的维度数量为x轴，y轴为算法运算时间，输入参数dataPreName为数据名字前缀（"anti","corr","inde"）,k为group的数目
 	//在data/output文件夹下生成输出的时间，第一列为x轴，第2-4列分别为PointWiseTime,UnitWiseTime,UnitWiseTimePlus
 	public static void drawBydimensions(String dataPreName,int k) {
-		int maxDim = 2;
+		int maxDim = 4;
 		double[] timePoint = new double[maxDim];
 		double[] timeUnit = new double[maxDim];
 		double[] timeUnitPlus = new double[maxDim];
@@ -95,7 +97,7 @@ public class Experiments {
 		allTime.add(timePoint);
 		allTime.add(timeUnit);
 		allTime.add(timeUnitPlus);
-		String filepath = "output/DimTime_" + dataPreName + ".txt";
+		String filepath = "output/DimTime_GroupSize" + k + "_"  + dataPreName + ".txt";
 		getResult(allTime, xaxis, filepath);
 	}
 	
@@ -180,7 +182,7 @@ public class Experiments {
 		allTime.add(timePoint);
 		allTime.add(timeUnit);
 		allTime.add(timeUnitPlus);
-		filepath = "output/GroupNumTime_" + filename ;
+		filepath = "output/GroupNumTime_MaxGroupSize" + k + "_" + filename ;
 		getResult(allTime, xaxis, filepath);
 	}
 	
@@ -210,28 +212,92 @@ public class Experiments {
 		}
 	}
 	
-	//遍历所有文本进行实验，得到实验输出
-	public static void AllExperiments() {
+	//遍历所有文本进行实验，得到实验输出,其中maxGroup为drawByGroup中最大组数，groups为drawBydimensions每个维度数据运行的group数目；
+	public static void AllExperiments(String[] allGroupName,String[] allDimPreName,int maxGroup,int groups) {
 		
-		//按数据group数量进行实验，得到结果
-		String[] allGroupName = {"corr_2.txt","corr_6.txt","inde_2.txt","inde_6.txt","anti_2.txt","anti_6.txt"};
-		for(String file:allGroupName) {
-			drawByGroup(file, 10);
+		try {
+			//按数据group数量进行实验，得到结果
+			//String[] allGroupName = {"corr_2.txt","corr_4.txt","inde_2.txt","inde_4.txt","anti_2.txt","anti_4.txt"};
+			for(String file:allGroupName) {
+				drawByGroup(file, maxGroup);
+			}
+			
+			//按数据维度进行实验，得到结果
+			//String[] allDimPreName = { "anti","corr","inde"};
+			for(String name:allDimPreName) {
+				drawBydimensions(name, groups);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		
-		//按数据维度进行实验，得到结果
-		String[] allDimPreName = { "anti","corr","inde"};
-		for(String name:allDimPreName) {
-			drawBydimensions(name, 4);
-		}
-		
 		
 	}
 	
-	public static void main(String[] args) {
+	//运行一个文件，输入参数String为文件名，k为groupSize,kind为运行的算法（0为pointWise，1为UnitWise，2为UnitWisePlus）
+	public static void RunSingleFile(String filename,int k,int kind) {
+		ReadData readData = new ReadData();
+		long startTime ;
+		if(filename.contains("2")) {
+			ArrayList<TwoDim> twodim_points = readData.buildTwoPoints(filename);
+			
+			startTime = System.currentTimeMillis();
+			BuildDSGTwoDim bDsg = new BuildDSGTwoDim();
+			ArrayList<ArrayList<GraphPoints<TwoDim>>> skylineLayerTwoDim = bDsg.BuildSkylineLayerForTwoDim(twodim_points);
+			ArrayList<ArrayList<GraphPoints<TwoDim>>> dsg = bDsg.BuildDsgForTwoDim(skylineLayerTwoDim,k);
+			
+			//运行pointWise算法
+			if(kind == 0) {
+				PointWise<TwoDim> pointWise = new PointWise<TwoDim>();
+				pointWise.pointWise(dsg, k);
+				System.out.println(filename + " PointWise Time:" + (System.currentTimeMillis()-startTime) + "ms" );
+			}else if(kind == 1) {
+				UnitGroupWise.run(dsg, k);
+				System.out.println(filename + " UnitWise Time:" + (System.currentTimeMillis()-startTime) + "ms" );
+			}else if(kind == 2) {
+				UnitGroupWisePlus.run(dsg, k);
+				System.out.println(filename + " UnitWisePlus Time:" + (System.currentTimeMillis()-startTime) + "ms" );
+			}
+		}else {
+			ArrayList<MultiDim> multidim_points = readData.buildMultiPoints(filename);
+			
+			startTime = System.currentTimeMillis();
+			BuildDSGMultiDim bDsg = new BuildDSGMultiDim();
+			ArrayList<ArrayList<GraphPoints<MultiDim>>> skylineLayerTwoDim = bDsg.BuildSkylineLayerForMultiDim(multidim_points);
+			ArrayList<ArrayList<GraphPoints<MultiDim>>> dsg = bDsg.BuildDsgForMultiDim(skylineLayerTwoDim,k);
+			
+			//运行pointWise算法
+			if(kind == 0) {
+				PointWise<MultiDim> pointWise = new PointWise<>();
+				pointWise.pointWise(dsg, k);
+				System.out.println(filename + " PointWise Time:" + (System.currentTimeMillis()-startTime) + "ms" );
+			}else if(kind == 1) {
+				UnitGroupWise.run(dsg, k);
+				System.out.println(filename + " UnitWise Time:" + (System.currentTimeMillis()-startTime) + "ms" );
+			}else if(kind == 2) {
+				UnitGroupWisePlus.run(dsg, k);
+				System.out.println(filename + " UnitWisePlus Time:" + (System.currentTimeMillis()-startTime) + "ms" );
+			}
+		}
+	}
+	
+ 	public static void main(String[] args) {
 		
-		//drawByGroup("hotel_2.txt", 4);
-		AllExperiments();
+		//drawByGroup("corr_2.txt", 4);
+ 		//drawBydimensions("corr", 3);
+ 		//在当前目录生成output并存储输出文本
+ 		Scanner input = new Scanner(System.in);
+ 		System.out.println("比较group数目对时间的影响，输入需要运行的最大group数目:");
+ 		int maxGroup = input.nextInt();
+ 		System.out.println("比较group数目对时间的影响，输入需要运行的数据文件名，以\",\"隔开");
+ 		String groupName =  input.next();
+ 		String[] groupNameArr = groupName.split(",");
+ 		System.out.println("比较不同维度对时间的影响，输入需要运行不同维度数据文本的group数目:");
+ 		int groupNum = input.nextInt();
+ 		System.out.println("比较不同维度对时间的影响，输入需要运行的数据文件名前缀(inde，anti，corr)，以\",\"隔开");
+ 		String preName =  input.next();
+ 		String[] preNameArr = preName.split(",");
+ 		AllExperiments(groupNameArr,preNameArr,maxGroup,groupNum); 		
+ 		//RunSingleFile("corr_2.txt",4,2 );
 		
 	}
 }
