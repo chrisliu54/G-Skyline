@@ -94,10 +94,11 @@ public class BuildDSGTwoDim {
 		return left;
 	}
 	
-	//使用skylineLayer构建DSG
-	public ArrayList<ArrayList<GraphPoints<TwoDim>>> BuildDsgForTwoDim(ArrayList<ArrayList<GraphPoints<TwoDim>>> dsg) {
-		
-		for(int i=1;i<dsg.size();i++) {
+	//使用skylineLayer构建DSG,仅构造第k层之前的节点
+	public ArrayList<ArrayList<GraphPoints<TwoDim>>> BuildDsgForTwoDim(ArrayList<ArrayList<GraphPoints<TwoDim>>> dsg,int k) {
+		long startTime = System.currentTimeMillis();
+		int layer_size = k < dsg.size() ? k:dsg.size();
+		for(int i=1;i<layer_size;i++) {
 			ArrayList<GraphPoints<TwoDim>> layer = dsg.get(i);
 			for(GraphPoints<TwoDim> point : layer) {
 				for(int j=0;j<i;j++) {
@@ -115,7 +116,8 @@ public class BuildDSGTwoDim {
 				
 			}
 		}
-		
+		long endTime = System.currentTimeMillis();
+		//System.out.println("BuildDsgForTwoDim花费时间：" + (endTime - startTime));
 		return dsg;
 	}
 	

@@ -2,7 +2,7 @@ package org.main;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -17,8 +17,9 @@ public class ReadData {
 		
 		try {
 			File file = new File(filepath);
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
-			BufferedReader bufferedReader = new BufferedReader(reader);
+			//InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
+			InputStream reader = ReadData.class.getResourceAsStream("/" + filepath);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(reader));
 			String line = null;
 			String numbers[];
 			double x,y;
@@ -34,7 +35,7 @@ public class ReadData {
 				TwoDim twoDim = new TwoDim(x,y,label);
 				twoDim_points.add(twoDim);
 			}
-			System.out.println("总的节点数为：" + twoDim_points.size());
+			//System.out.println("总的节点数为：" + twoDim_points.size());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -47,8 +48,9 @@ public class ReadData {
 		try {
 			
 			File file = new File(filepath);
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
-			BufferedReader bufferedReader = new BufferedReader(reader);
+			//InputStreamReader reader = new InputStreamReader(new FileInputStream(file),"utf-8");
+			InputStream reader = ReadData.class.getResourceAsStream("/" + filepath);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(reader));
 			String line = null;
 			String numbers[];
 			int label = 0;
@@ -63,7 +65,7 @@ public class ReadData {
 				MultiDim multiDim = new MultiDim(multiDimValue, label);
 				multiDim_points.add(multiDim);
 			}
-			System.out.println("总的节点数为：" + multiDim_points.size());
+			//System.out.println("总的节点数为：" + multiDim_points.size());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
