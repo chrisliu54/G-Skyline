@@ -285,19 +285,20 @@ public class Experiments {
 		//drawByGroup("corr_2.txt", 4);
  		//drawBydimensions("corr", 3);
  		//在当前目录生成output并存储输出文本
- 		Scanner input = new Scanner(System.in);
- 		System.out.println("比较group数目对时间的影响，输入需要运行的最大group数目:");
- 		int maxGroup = input.nextInt();
- 		System.out.println("比较group数目对时间的影响，输入需要运行的数据文件名，以\",\"隔开");
- 		String groupName =  input.next();
- 		String[] groupNameArr = groupName.split(",");
- 		System.out.println("比较不同维度对时间的影响，输入需要运行不同维度数据文本的group数目:");
- 		int groupNum = input.nextInt();
- 		System.out.println("比较不同维度对时间的影响，输入需要运行的数据文件名前缀(inde，anti，corr)，以\",\"隔开");
- 		String preName =  input.next();
- 		String[] preNameArr = preName.split(",");
- 		AllExperiments(groupNameArr,preNameArr,maxGroup,groupNum); 		
- 		//RunSingleFile("corr_2.txt",4,2 );
-		
+// 		Scanner input = new Scanner(System.in);
+// 		System.out.println("比较group数目对时间的影响，输入需要运行的最大group数目:");
+// 		int maxGroup = input.nextInt();
+// 		System.out.println("比较group数目对时间的影响，输入需要运行的数据文件名，以\",\"隔开");
+// 		String groupName =  input.next();
+// 		String[] groupNameArr = groupName.split(",");
+// 		System.out.println("比较不同维度对时间的影响，输入需要运行不同维度数据文本的group数目:");
+// 		int groupNum = input.nextInt();
+// 		System.out.println("比较不同维度对时间的影响，输入需要运行的数据文件名前缀(inde，anti，corr)，以\",\"隔开");
+// 		String preName =  input.next();
+// 		String[] preNameArr = preName.split(",");
+// 		AllExperiments(groupNameArr,preNameArr,maxGroup,groupNum);
+		int k = Integer.parseInt(args[1]);
+		int kind = Integer.parseInt(args[2]);
+ 		RunSingleFile(args[0],k,kind );
 	}
 }
