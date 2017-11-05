@@ -21,10 +21,13 @@ public class UnitGroupWise {
         for (int i = 0; i < total_point_size; ++i) {
             GraphPoints<T> unit = pre_points.get(i);
             Group<T> g_1 = new Group<>(unit);
-            // 当前unit的元素个数为k
-            if (g_1.getNumberOfPoints() == k) {
+            // 当前unit里元素个数大于等于k
+            int number_of_point = g_1.getNumberOfPoints();
+            if (number_of_point >= k) {
                 //g_1.print();
-            	ans++;
+                if (number_of_point == k) {
+                    ans++;
+                }
                 continue;
             }
 
