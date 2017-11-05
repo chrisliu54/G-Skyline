@@ -17,7 +17,7 @@ public class UnitGroupWise {
         int ans = 0;
         int total_point_size = pre_points.size();
 
-        // 逆序遍历数组
+        // 顺序遍历数组
         for (int i = 0; i < total_point_size; ++i) {
             GraphPoints<T> unit = pre_points.get(i);
             Group<T> g_1 = new Group<>(unit);
