@@ -36,10 +36,10 @@ public class UnitGroupWisePlus {
             if (number_of_points == k) {
                 //g_last.print();
                 ans++;
-                continue;
+                break;
             }
             else if (number_of_points < k) {
-                continue;
+                break;
             }
 
             Queue<Group> queue = new LinkedList<>();
