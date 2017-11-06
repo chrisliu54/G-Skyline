@@ -27,7 +27,7 @@ public class PointWise<T> {
 //	}
 	
 	//根据预处理的Pre_dsg，执行pointWise算法
-	public ArrayList<ArrayList<GraphPoints<T>>> pointWise(ArrayList<ArrayList<GraphPoints<T>>> dsgs,int k){
+	public int pointWise(ArrayList<ArrayList<GraphPoints<T>>> dsgs,int k){
 		
 		
 		ArrayList<GraphPoints<T>> pre_points = Utils.preprocessing(dsgs, k);
@@ -97,7 +97,7 @@ public class PointWise<T> {
 		}
 		//PrintGroup(k_skylineGgroups.get(k_skylineGgroups.size()-1));
 		System.out.println("得到的G-Skyline数目为：" + k_skylineGgroups.get(k_skylineGgroups.size()-1).size() );
-		return k_skylineGgroups.get(k_skylineGgroups.size()-1);
+		return k_skylineGgroups.get(k_skylineGgroups.size()-1).size();
 	}
 	
 	public boolean IsSkylineGroup(ArrayList<GraphPoints<T>> groups , int k ) {
