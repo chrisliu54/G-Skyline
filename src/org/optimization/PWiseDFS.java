@@ -150,7 +150,7 @@ public class PWiseDFS <T>{
 //		long endTime4 = System.currentTimeMillis();
 		
 		//BuildDSGMultiDim dsgMultiDim = new BuildDSGMultiDim();
-		int k = 12;
+		int k = 3;
 		
 		BuildDSGTwoDim bDsg = new BuildDSGTwoDim();
 		ArrayList<ArrayList<GraphPoints<TwoDim>>> skylineLayerTwoDim = bDsg.BuildSkylineLayerForTwoDim(twodim_points);
