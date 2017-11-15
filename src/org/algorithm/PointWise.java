@@ -53,6 +53,7 @@ public class PointWise<T> {
 		//PrintGroup(levelGroup);
 		k_skylineGgroups.add(levelGroup);
 
+		int ans = 0;
 		
 		//line2 循环每一个k
 		for(int i=1;i<k;i++) {
@@ -76,6 +77,9 @@ public class PointWise<T> {
 				if(groups.size()>0) tail = groups.get(groups.size()-1).point_index + 1;
 			
 				for(int j=tail;j<pre_points.size();j++) {
+					
+					ans+=1;
+					
 					//line6-line10 剪枝
 					//System.out.println("tail=" + tail + " pre=" + pre_points.size() + " j=" + j);
 					GraphPoints<T> cur_point = pre_points.get(j);
@@ -96,8 +100,9 @@ public class PointWise<T> {
 			//PrintGroup(levelGroup);
 		}
 		//PrintGroup(k_skylineGgroups.get(k_skylineGgroups.size()-1));
-		System.out.println("得到的G-Skyline数目为：" + k_skylineGgroups.get(k_skylineGgroups.size()-1).size() );
+		System.out.println("得到的G-Skyline数目为：" + k_skylineGgroups.get(k_skylineGgroups.size()-1).size() + " 遍历结点的数目:" + ans );
 		return k_skylineGgroups.get(k_skylineGgroups.size()-1).size();
+
 	}
 	
 	public boolean IsSkylineGroup(ArrayList<GraphPoints<T>> groups , int k ) {
