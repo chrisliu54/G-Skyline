@@ -9,6 +9,8 @@ import java.util.Scanner;
 import org.algorithm.PointWise;
 import org.algorithm.UnitGroupWise;
 import org.algorithm.UnitGroupWisePlus;
+import org.optimization.UWisePlusDFS;
+import org.optimization.UWisePlusPlus;
 import org.struct.BuildDSGMultiDim;
 import org.struct.BuildDSGTwoDim;
 import org.struct.GraphPoints;
@@ -256,7 +258,15 @@ public class Experiments {
 			}else if(kind == 2) {
 				UnitGroupWisePlus.run(dsg, k);
 				System.out.println(filename + " UnitWisePlus Time:" + (System.currentTimeMillis()-startTime) + "ms" );
-			}
+			}else if(kind == 3) {
+                UWisePlusDFS<TwoDim> uWisePlusDFS = new UWisePlusDFS<>(dsg, k);
+                uWisePlusDFS.run();
+                System.out.println(filename + "UWisePlusDFS Time:" + (System.currentTimeMillis()-startTime) + "ms");
+			}else if(kind == 4) {
+                UWisePlusPlus<TwoDim> uWisePlusPlus = new UWisePlusPlus<>(dsg, k);
+                uWisePlusPlus.run();
+                System.out.println(filename + "UWise++ Time:" + (System.currentTimeMillis()-startTime) + "ms");
+            }
 		}else {
 			ArrayList<MultiDim> multidim_points = readData.buildMultiPoints(filename);
 			
@@ -276,6 +286,14 @@ public class Experiments {
 			}else if(kind == 2) {
 				UnitGroupWisePlus.run(dsg, k);
 				System.out.println(filename + " UnitWisePlus Time:" + (System.currentTimeMillis()-startTime) + "ms" );
+			}else if(kind == 3) {
+                UWisePlusDFS<MultiDim> uWisePlusDFS = new UWisePlusDFS<>(dsg, k);
+                uWisePlusDFS.run();
+                System.out.println(filename + "UWisePlusDFS Time:" + (System.currentTimeMillis()-startTime) + "ms");
+            }else if(kind == 4) {
+                UWisePlusPlus<MultiDim> uWisePlusPlus = new UWisePlusPlus<>(dsg, k);
+                uWisePlusPlus.run();
+                System.out.println(filename + "UWise++ Time:" + (System.currentTimeMillis()-startTime) + "ms");
 			}
 		}
 	}
