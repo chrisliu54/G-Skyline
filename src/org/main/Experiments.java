@@ -18,7 +18,6 @@ import org.struct.MultiDim;
 import org.struct.TwoDim;
 
 
-
 public class Experiments {
 	
 	//以数据集的维度数量为x轴，y轴为算法运算时间，输入参数dataPreName为数据名字前缀（"anti","corr","inde"）,k为group的数目
@@ -51,19 +50,19 @@ public class Experiments {
 				pointWise.pointWise(dsg, k);
 				finallyTimePoint = System.currentTimeMillis()-startTime+buildDsgTime;
 				timePoint[i] = finallyTimePoint;
-				System.out.println(filepath + " PointWise Time:" + finallyTimePoint + "ms" );
+				System.out.println(filepath + "GroupSize:" + k +  " PointWise Time:" + finallyTimePoint + "ms" );
 				
 				startTime = System.currentTimeMillis();
 				UnitGroupWise.run(dsg, k);
 				finallyTimeUnit = System.currentTimeMillis()-startTime+buildDsgTime;
 				timeUnit[i] = finallyTimeUnit;
-				System.out.println(filepath + " UnitWise Time:" + finallyTimeUnit + "ms" );
+				System.out.println(filepath + "GroupSize:" + k +  " UnitWise Time:" + finallyTimeUnit + "ms" );
 				
 				startTime = System.currentTimeMillis();
 				UnitGroupWisePlus.run(dsg, k);
 				finallyTimeUnitPlus = System.currentTimeMillis()-startTime+buildDsgTime;
 				timeUnitPlus[i] = finallyTimeUnitPlus;
-				System.out.println(filepath + " UnitWisePlus Time:" + finallyTimeUnitPlus + "ms" );
+				System.out.println(filepath + "GroupSize:" + k +  " UnitWisePlus Time:" + finallyTimeUnitPlus + "ms" );
 				
 			}
 			//--------------MultiDim-------------------------
@@ -80,19 +79,19 @@ public class Experiments {
 				pointWise.pointWise(dsg_multi_dim, k);
 				finallyTimePoint = System.currentTimeMillis()-startTime+buildDsgTime;
 				timePoint[i] = finallyTimePoint;
-				System.out.println(filepath + " PointWise Time:" + finallyTimePoint + "ms" );
+				System.out.println(filepath + "GroupSize:" + k +  " PointWise Time:" + finallyTimePoint + "ms" );
 				
 				startTime = System.currentTimeMillis();
 				UnitGroupWise.run(dsg_multi_dim, k);
 				finallyTimeUnit = System.currentTimeMillis()-startTime+buildDsgTime;
 				timeUnit[i] = finallyTimeUnit;
-				System.out.println(filepath + " UnitWise Time:" + finallyTimeUnit + "ms" );
+				System.out.println(filepath + "GroupSize:" + k +  " UnitWise Time:" + finallyTimeUnit + "ms" );
 				
 				startTime = System.currentTimeMillis();
 				UnitGroupWisePlus.run(dsg_multi_dim, k);
 				finallyTimeUnitPlus = System.currentTimeMillis()-startTime+buildDsgTime;
 				timeUnitPlus[i] = finallyTimeUnitPlus;
-				System.out.println(filepath + " UnitWisePlus Time:" + finallyTimeUnitPlus + "ms" );
+				System.out.println(filepath + "GroupSize:" + k +  " UnitWisePlus Time:" + finallyTimeUnitPlus + "ms" );
 			}
 		}
 		ArrayList<double[]> allTime = new ArrayList<>();
@@ -315,8 +314,22 @@ public class Experiments {
 // 		String preName =  input.next();
 // 		String[] preNameArr = preName.split(",");
 // 		AllExperiments(groupNameArr,preNameArr,maxGroup,groupNum);
-		int k = Integer.parseInt(args[1]);
-		int kind = Integer.parseInt(args[2]);
- 		RunSingleFile(args[0],k,kind );
+ 	
+// 		System.out.println("输入要跑的文件名：");
+// 		String name = input.next();
+// 		System.out.println("输入GroupSize：");
+// 		int k = input.nextInt();
+// 		System.out.println("输入算法（0位pointWise，1位UnitWise，2为UnitWisePlus）");
+// 		int kind = input.nextInt();
+// 		RunSingleFile(name,k,kind );
+		
+		//int k = Integer.parseInt(args[1]);
+		//int kind = Integer.parseInt(args[2]);
+		String pathname  = "inde_4.txt";
+		int k = 4;
+		int kind = 2;
+ 		//RunSingleFile(args[0],k,kind );
+ 		RunSingleFile(pathname,k,kind );
+ 		
 	}
 }

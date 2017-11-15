@@ -17,7 +17,7 @@ public class MultiDim implements Comparator<MultiDim> {
 	}
 
 	public String toString() {
-		return this.values.toString();
+		return this.values.toString(); 
 	}
 
 	@Override
