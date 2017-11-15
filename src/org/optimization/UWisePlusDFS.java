@@ -40,7 +40,7 @@ public class UWisePlusDFS<T> {
     检查g的g_last，如果g_last点数小于等于k，则不用继续执行，返回false；否则返回true
     其中，当g_last点等于k时，方案数+1
      */
-    protected boolean evaluate(Group<T> g) {
+    public boolean evaluate(Group<T> g) {
         Group<T> g_last = new Group<>(g);
         for (Integer idx: g_last.getCandidateUnitGroupsBackward()) {
             g_last.mergeUnitGroup(pre_points.get(idx));
@@ -75,7 +75,9 @@ public class UWisePlusDFS<T> {
                 dfs(g_1);
             }
        }
-        System.out.println("UWisePlusDFS的G_skylineGroup数目为:" + ans);
+       String fullClazzName = this.getClass().getName();
+       String clazzName = fullClazzName.substring(fullClazzName.lastIndexOf(".") + 1);
+       System.out.println(clazzName + "的G_skylineGroup数目为:" + ans);
     }
 }
 
