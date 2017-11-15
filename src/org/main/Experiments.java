@@ -305,9 +305,13 @@ public class Experiments {
 // 		int kind = input.nextInt();
 // 		RunSingleFile(name,k,kind );
 		
-		int k = Integer.parseInt(args[1]);
-		int kind = Integer.parseInt(args[2]);
- 		RunSingleFile(args[0],k,kind );
+		//int k = Integer.parseInt(args[1]);
+		//int kind = Integer.parseInt(args[2]);
+		String pathname  = "inde_4.txt";
+		int k = 4;
+		int kind = 2;
+ 		//RunSingleFile(args[0],k,kind );
+ 		RunSingleFile(pathname,k,kind );
  		
 	}
 }
