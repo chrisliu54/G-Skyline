@@ -77,7 +77,7 @@ public class UWisePlusDFS<T> {
        }
        String fullClazzName = this.getClass().getName();
        String clazzName = fullClazzName.substring(fullClazzName.lastIndexOf(".") + 1);
-       System.out.println(clazzName + "的G_skylineGroup数目为:" + ans);
+       System.out.println(" " + clazzName + "的G_skylineGroup数目为:" + ans);
     }
 }
 

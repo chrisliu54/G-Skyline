@@ -1,3 +1,6 @@
+src/META-INF/
+.idea/
+out/
 /bin/
 *.classpath
 *.project

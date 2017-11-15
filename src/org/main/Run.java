@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import org.algorithm.PointWise;
 import org.algorithm.UnitGroupWise;
 import org.algorithm.UnitGroupWisePlus;
+import org.optimization.UWisePlusDFS;
+import org.optimization.UWisePlusPlus;
 import org.struct.BuildDSGMultiDim;
 import org.struct.BuildDSGTwoDim;
 import org.struct.GraphPoints;
@@ -54,10 +56,22 @@ public class Run {
 		long startTime3 = System.currentTimeMillis();
 		UnitGroupWisePlus.run(dsg, 4);
 		long endTime3 = System.currentTimeMillis();
-		
+
+		long startTime4 = System.currentTimeMillis();
+		UWisePlusDFS<TwoDim> uWisePlusDFS = new UWisePlusDFS<TwoDim>(dsg, 4);
+        uWisePlusDFS.run();
+        long endTime4 = System.currentTimeMillis();
+
+		long startTime5 = System.currentTimeMillis();
+		UWisePlusPlus<TwoDim> uWisePlusPlus = new UWisePlusPlus<>(dsg, 4);
+        uWisePlusPlus.run();
+		long endTime5 = System.currentTimeMillis();
+
 		System.out.println("程序pointwise运行时间为：" + (endTime1-startTime1) + "ms" );
 		System.out.println("程序unitgroupwise运行时间为：" + (endTime2-startTime2) + "ms" );
 		System.out.println("程序unitgroupwise+运行时间为：" + (endTime3-startTime3) + "ms" );
+		System.out.println("程序uwise+dfs运行时间为：" + (endTime4 - startTime4) + "ms");
+        System.out.println("程序uwise++运行时间为：" + (endTime5 - startTime5) + "ms");
 
 		
  	}
