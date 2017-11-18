@@ -1,4 +1,4 @@
-package org.struct;
+package hw2.struct;
 
 import java.util.ArrayList;
 
@@ -26,4 +26,12 @@ public class Utils {
 	        for(int i=0;i<pre_points.size();i++) pre_points.get(i).point_index = i;
 	        return pre_points;
 	    }
+
+	    public static Long getCombinationNumber(int n, int m) {
+	        Long ans = new Long(1L);
+	        for (int i = 1; i <= m; ++i) {
+	            ans = ans * (n-m+i) / i;
+            }
+            return ans;
+        }
 }

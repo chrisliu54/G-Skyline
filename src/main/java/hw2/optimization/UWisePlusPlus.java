@@ -1,7 +1,7 @@
-package org.optimization;
+package hw2.optimization;
 
-import org.struct.GraphPoints;
-import org.struct.Group;
+import hw2.struct.GraphPoints;
+import hw2.struct.Group;
 
 import java.util.ArrayList;
 

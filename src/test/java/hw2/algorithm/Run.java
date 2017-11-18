@@ -1,16 +1,13 @@
-package org.main;
+package hw2.algorithm;
 import java.util.ArrayList;
 
-import org.algorithm.PointWise;
-import org.algorithm.UnitGroupWise;
-import org.algorithm.UnitGroupWisePlus;
-import org.optimization.UWisePlusDFS;
-import org.optimization.UWisePlusPlus;
-import org.struct.BuildDSGMultiDim;
-import org.struct.BuildDSGTwoDim;
-import org.struct.GraphPoints;
-import org.struct.MultiDim;
-import org.struct.TwoDim;
+import hw2.optimization.UWisePlusDFS;
+import hw2.optimization.UWisePlusPlus;
+import hw2.struct.BuildDSGMultiDim;
+import hw2.struct.BuildDSGTwoDim;
+import hw2.struct.GraphPoints;
+import hw2.struct.MultiDim;
+import hw2.struct.TwoDim;
 
 public class Run {
 	

@@ -1,6 +1,7 @@
-src/META-INF/
+src/main/java/META-INF/
 .idea/
 out/
-/bin/
+target/
+bin/
 *.classpath
 *.project

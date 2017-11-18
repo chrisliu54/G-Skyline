@@ -1,12 +1,10 @@
-package org.optimization;
+package hw2.optimization;
 
-import org.struct.GraphPoints;
-import org.struct.Group;
-import org.struct.Utils;
+import hw2.struct.GraphPoints;
+import hw2.struct.Group;
+import hw2.struct.Utils;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class UWisePlusDFS<T> {
 
@@ -70,9 +68,16 @@ public class UWisePlusDFS<T> {
                 continue;
             }
 
-            // 检测last集，点数小于k才继续执行
+            // 检测last集，点数大于k才继续执行
             if (evaluate(g_1)) {
-                dfs(g_1);
+                if (unit.layer_index == 1) {
+                    // 从当前的i+1个点中选出k个点
+                    ans += Utils.getCombinationNumber(i+1, k);
+                    break;
+                }
+                else {
+                    dfs(g_1);
+                }
             }
        }
        String fullClazzName = this.getClass().getName();
@@ -80,4 +85,3 @@ public class UWisePlusDFS<T> {
        System.out.println(" " + clazzName + "的G_skylineGroup数目为:" + ans);
     }
 }
-

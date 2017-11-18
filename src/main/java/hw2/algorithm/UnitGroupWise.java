@@ -1,8 +1,8 @@
-package org.algorithm;
+package hw2.algorithm;
 
-import org.struct.GraphPoints;
-import org.struct.Group;
-import org.struct.Utils;
+import hw2.struct.GraphPoints;
+import hw2.struct.Group;
+import hw2.struct.Utils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
