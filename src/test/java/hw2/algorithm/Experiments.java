@@ -1,9 +1,6 @@
 package hw2.algorithm;
 
-import hw2.optimization.PWiseDFS;
-import hw2.optimization.PWisePlus;
-import hw2.optimization.UWisePlusDFS;
-import hw2.optimization.UWisePlusPlus;
+import hw2.optimization.*;
 import hw2.struct.*;
 
 import java.io.BufferedWriter;
@@ -266,6 +263,14 @@ public class Experiments {
                 PWisePlus<TwoDim> pWisePlus = new PWisePlus<>();
                 pWisePlus.pWisePlus(dsg, k);
                 System.out.println(filename + " PointWisePles Time" + (System.currentTimeMillis()-startTime) + "ms" );
+            }else if(kind == 7) {
+                UWisePlusLayer1Pruning<TwoDim> uWisePlusLayer1Pruning = new UWisePlusLayer1Pruning<>(dsg, k);
+                uWisePlusLayer1Pruning.run();
+                System.out.println(filename + "UWisePlusLayer1Pruning Time:" + (System.currentTimeMillis()-startTime) + "ms");
+            }else if(kind == 8) {
+                UWisePlusLayer1PruningPlus<TwoDim> uWisePlusLayer1PruningPlus = new UWisePlusLayer1PruningPlus<>(dsg, k);
+                uWisePlusLayer1PruningPlus.run();
+                System.out.println(filename + "UWisePlusLayer1PruningPlus Time:" + (System.currentTimeMillis()-startTime) + "ms");
             }
         }else {
             ArrayList<MultiDim> multidim_points = readData.buildMultiPoints(filename);
@@ -302,6 +307,14 @@ public class Experiments {
                 PWisePlus<MultiDim> pWisePlus = new PWisePlus<>();
                 pWisePlus.pWisePlus(dsg, k);
                 System.out.println(filename + " PointWisePles Time" + (System.currentTimeMillis()-startTime) + "ms" );
+            }else if(kind == 7) {
+                UWisePlusLayer1Pruning<MultiDim> uWisePlusLayer1Pruning = new UWisePlusLayer1Pruning<>(dsg, k);
+                uWisePlusLayer1Pruning.run();
+                System.out.println(filename + " UWisePlusLayer1Pruning Time:" + (System.currentTimeMillis()-startTime) + "ms");
+            }else if(kind == 8) {
+                UWisePlusLayer1PruningPlus<MultiDim> uWisePlusLayer1PruningPlus = new UWisePlusLayer1PruningPlus<>(dsg, k);
+                uWisePlusLayer1PruningPlus.run();
+                System.out.println(filename + " UWisePlusLayer1PruningPlus Time:" + (System.currentTimeMillis()-startTime) + "ms");
             }
         }
     }

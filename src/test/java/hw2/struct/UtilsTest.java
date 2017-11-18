@@ -9,10 +9,10 @@ class UtilsTest {
     @Test
     public void testGtCombinationNumber() {
         Long res = Utils.getCombinationNumber(5, 1);
-        assertEquals(res, new Long(5));
+        assertEquals(new Long(5), res);
 
         res = Utils.getCombinationNumber(10, 3);
-        assertEquals(res, new Long(120));
+        assertEquals(new Long(120), res);
     }
 
 }

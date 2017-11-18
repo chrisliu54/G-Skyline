@@ -65,7 +65,7 @@ public class Group<T> {
         }
         List<Integer> candidate = new ArrayList<>();
         HashSet<Integer> parents_set = getIndicesOfParents();
-        for (int i = 0; i < min_index; ++i) {
+        for (int i = min_index - 1; i >= 0; --i) {
             if (!parents_set.contains(i)) {
                 candidate.add(i);
             }

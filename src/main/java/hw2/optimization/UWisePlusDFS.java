@@ -70,18 +70,11 @@ public class UWisePlusDFS<T> {
 
             // 检测last集，点数大于k才继续执行
             if (evaluate(g_1)) {
-                if (unit.layer_index == 1) {
-                    // 从当前的i+1个点中选出k个点
-                    ans += Utils.getCombinationNumber(i+1, k);
-                    break;
-                }
-                else {
-                    dfs(g_1);
-                }
+                dfs(g_1);
             }
        }
        String fullClazzName = this.getClass().getName();
        String clazzName = fullClazzName.substring(fullClazzName.lastIndexOf(".") + 1);
-       System.out.println(" " + clazzName + "的G_skylineGroup数目为:" + ans);
+       System.out.println(clazzName + "的G_skylineGroup数目为:" + ans);
     }
 }
