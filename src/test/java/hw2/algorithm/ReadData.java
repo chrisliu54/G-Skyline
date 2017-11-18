@@ -1,4 +1,4 @@
-package org.main;
+package hw2.algorithm;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,8 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import org.struct.MultiDim;
-import org.struct.TwoDim;
+import hw2.struct.MultiDim;
+import hw2.struct.TwoDim;
 
 public class ReadData {
 	

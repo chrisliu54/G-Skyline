@@ -1,4 +1,4 @@
-package org.struct;
+package hw2.struct;
 
 import java.util.Comparator;
 

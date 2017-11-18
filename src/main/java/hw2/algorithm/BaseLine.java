@@ -1,4 +1,4 @@
-package org.algorithm;
+package hw2.algorithm;
 
 import java.util.ArrayList;
 
