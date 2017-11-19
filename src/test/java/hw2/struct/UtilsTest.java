@@ -1,5 +1,6 @@
 package hw2.struct;
 
+import hw2.common.Utils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

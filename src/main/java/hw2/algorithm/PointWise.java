@@ -3,7 +3,7 @@ package hw2.algorithm;
 import java.util.*;
 
 import hw2.struct.GraphPoints;
-import hw2.struct.Utils;
+import hw2.common.Utils;
 
 public class PointWise<T> {
 

@@ -1,17 +1,14 @@
 package hw2.optimization;
 
 import hw2.algorithm.PointWise;
-import hw2.algorithm.ReadData;
+import hw2.common.ReadData;
 import hw2.algorithm.UnitGroupWisePlus;
 import hw2.struct.BuildDSGMultiDim;
 import hw2.struct.GraphPoints;
 import hw2.struct.MultiDim;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PWiseDFSTest {
 

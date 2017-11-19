@@ -5,8 +5,7 @@ import java.util.HashSet;
 import java.util.Stack;
 
 import hw2.struct.GraphPoints;
-import hw2.struct.MultiDim;
-import hw2.struct.Utils;
+import hw2.common.Utils;
 
 
 public class PWiseDFS <T>{

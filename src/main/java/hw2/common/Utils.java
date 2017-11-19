@@ -1,4 +1,6 @@
-package hw2.struct;
+package hw2.common;
+
+import hw2.struct.GraphPoints;
 
 import java.util.ArrayList;
 

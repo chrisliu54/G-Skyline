@@ -1,6 +1,7 @@
 package hw2.optimization;
 
 import hw2.algorithm.Experiments;
+import hw2.common.RunSingleFile;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -69,8 +70,8 @@ class UWisePlusLayer1PruningPlusTest {
 
     @Test
     public void testMain() {
-        Experiments.RunSingleFile("anti_2.txt", 4, 2);
-        Experiments.RunSingleFile("anti_2.txt", 4, 7);
-        Experiments.RunSingleFile("anti_2.txt", 4, 8);
+        RunSingleFile.run("anti_2.txt", 4, 2);
+        RunSingleFile.run("anti_2.txt", 4, 7);
+        RunSingleFile.run("anti_2.txt", 4, 8);
     }
 }

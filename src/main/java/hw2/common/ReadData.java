@@ -1,4 +1,4 @@
-package hw2.algorithm;
+package hw2.common;
 
 import java.io.BufferedReader;
 import java.io.File;

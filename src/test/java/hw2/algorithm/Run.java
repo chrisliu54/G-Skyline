@@ -1,6 +1,7 @@
 package hw2.algorithm;
 import java.util.ArrayList;
 
+import hw2.common.ReadData;
 import hw2.optimization.UWisePlusDFS;
 import hw2.optimization.UWisePlusPlus;
 import hw2.struct.BuildDSGMultiDim;

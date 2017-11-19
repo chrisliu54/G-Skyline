@@ -1,5 +1,7 @@
 package hw2.struct;
 
+import hw2.common.Utils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;

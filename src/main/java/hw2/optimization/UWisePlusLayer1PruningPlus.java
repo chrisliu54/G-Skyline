@@ -2,7 +2,7 @@ package hw2.optimization;
 
 import hw2.struct.GraphPoints;
 import hw2.struct.Group;
-import hw2.struct.Utils;
+import hw2.common.Utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
