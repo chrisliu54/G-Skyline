@@ -22,14 +22,14 @@ class UWisePlusLayer1PruningPlusTest {
 
         int[] prefix_sum = {3, 5, 6, 10};
 
-        int res = UWisePlusLayer1PruningPlus.dfsOnLayer1(prefix_sum, segs, 0, 0, 1);
-        assertEquals(10, res);
+        Long res = UWisePlusLayer1PruningPlus.dfsOnLayer1(prefix_sum, segs, 0, 0, 1);
+        assertEquals(new Long(10), res);
 
         res = UWisePlusLayer1PruningPlus.dfsOnLayer1(prefix_sum, segs, 0, 0, 2);
-        assertEquals(45, res);
+        assertEquals(new Long(45), res);
 
         res = UWisePlusLayer1PruningPlus.dfsOnLayer1(prefix_sum, segs, 0, 0, 3);
-        assertEquals(120, res);
+        assertEquals(new Long(120), res);
     }
 
     @Test
@@ -38,21 +38,33 @@ class UWisePlusLayer1PruningPlusTest {
         HashSet<Integer> parents_set = new HashSet<>(Arrays.asList(3, 4, 7, 9));
         int bound = 13;
 
-        int res = UWisePlusLayer1PruningPlus.processLayer1Points(parents_set, bound, 1);
-        assertEquals(10, res);
+        Long res = UWisePlusLayer1PruningPlus.processLayer1Points(parents_set, bound, 1);
+        assertEquals(new Long(10), res);
 
         res = UWisePlusLayer1PruningPlus.processLayer1Points(parents_set, bound, 2);
-        assertEquals(45, res);
+        assertEquals(new Long(45), res);
 
         res = UWisePlusLayer1PruningPlus.processLayer1Points(parents_set, bound, 3);
-        assertEquals(120, res);
+        assertEquals(new Long(120), res);
 
         // 以下是完全没有分组的情况
         res = UWisePlusLayer1PruningPlus.processLayer1Points(new HashSet<Integer>(), 4, 2);
-        assertEquals(10, res);
+        assertEquals(new Long(10), res);
 
         res = UWisePlusLayer1PruningPlus.processLayer1Points(new HashSet<Integer>(), 9, 3);
-        assertEquals(120, res);
+        assertEquals(new Long(120), res);
+    }
+
+    @Test
+    public void testGetCombinationNumberWithoutAncestors() {
+        HashSet<Integer> parents_set = new HashSet<>(Arrays.asList(3, 4, 7, 9));
+        int bound = 13;
+        Long res1, res2;
+        for (int i = 1; i <= 4; ++i) {
+            res2 = UWisePlusLayer1PruningPlus.getCombinationNumberWithoutAncestors(parents_set, bound, 2);
+            res1 = UWisePlusLayer1PruningPlus.processLayer1Points(parents_set, bound, 2);
+            assertEquals(res1, res2);
+        }
     }
 
     @Test
