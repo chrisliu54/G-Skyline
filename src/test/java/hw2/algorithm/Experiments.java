@@ -346,7 +346,7 @@ public class Experiments {
 // 		RunSingleFile(name,k,kind );
 
         System.out.println("3个参数，data_filename,group_size,algorithm_kind");
-        System.out.println("kind为运行的算法（0为pointWise，1为UnitWise，2为UnitWisePlus,3为uWisePlusDFS，4为uWisePlusPlus，5为pWiseDFS，6为pWisePlus）");
+        System.out.println("kind为运行的算法（0为pointWise，1为UnitWise，2为UnitWisePlus,3为uWisePlusDFS，4为uWisePlusPlus，5为pWiseDFS，6为pWisePlus，7为UWisePlusLayer1Pruning，8为UWisePlusLayer1PruningPlus）");
         int k = Integer.parseInt(args[1]);
         int kind = Integer.parseInt(args[2]);
         RunSingleFile(args[0],k,kind );

@@ -28,6 +28,12 @@ public class Utils {
 	    }
 
 	    public static Long getCombinationNumber(int n, int m) {
+	    	if (n < m) {
+	    		return 0L;
+			}
+			else if (m == 0) {
+	    		return 1L;
+			}
 	        Long ans = new Long(1L);
 	        for (int i = 1; i <= m; ++i) {
 	            ans = ans * (n-m+i) / i;

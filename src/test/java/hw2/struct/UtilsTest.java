@@ -13,6 +13,12 @@ class UtilsTest {
 
         res = Utils.getCombinationNumber(10, 3);
         assertEquals(new Long(120), res);
+
+        res = Utils.getCombinationNumber(10, 0);
+        assertEquals(new Long(1), res);
+
+        res = Utils.getCombinationNumber(10, 11);
+        assertEquals(new Long(0), res);
     }
 
 }
